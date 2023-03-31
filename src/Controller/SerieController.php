@@ -59,12 +59,11 @@ class SerieController extends AbstractController
 
     public function GetLikeOneSerie($id, ManagerRegistry $doctrine): Response
     {
-    
-        $repository = $doctrine->getRepository(Hackathons::class);
+        $repository = $doctrine->getRepository(Serie::class);
         $laSeries = $repository->find($id);
         try {
         if(!$laSeries) {
-            throw $this->createNotFoundException('Le hackathon n a pas ete trouvee');}
+            throw $this->createNotFoundException('La serie n\'a pas été trouvée');}
         $nblikes = $laSeries->getLikes();
         $nblikes = $nblikes + 1;
         $laSeries->setLikes($nblikes);

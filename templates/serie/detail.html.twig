@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    
+
+     
+    <div class="container-fluid p-5 bg-primary text-white text-center rounded" style="width: 70%;">
+  
+  <div class="card-body d-flex">
+  <img src="{{laSeries.image}}" class="card-img-top img-fluid rounded m-3" alt="...">
+  <div class="m-3 d-flex flex-column justify-content-between">
+    <h5 class="card-title">{{laSeries.titre|upper}}</h5>
+    <p class="card-text">{{laSeries.resume}}</p>
+      <ul class="list-group list-group-flush">
+    <li class="list-group-item">{{laSeries.premiereDiffusion|date("d/m/y")}}</li>
+    <div>
+  </div>
+
+    
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="container">
+		<h1>Les séries</h1>
+		<div style="
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+">
+			{% for UneSeries in lesSeries %}
+				<div class="card" style="width: 18rem;">
+					<a href="{{path('app_serie_detail',{id : UneSeries.id})}}">
+						<img src="{{UneSeries.image}}" class="card-img-top" alt="...">
+					</a>
+					<div class="card-body">
+						<h5 class="card-title">{{UneSeries.titre|upper}}</h5>
+						<p class="card-text">{{UneSeries.resume}}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">{{UneSeries.premiereDiffusion|date("d/m/y")}}</li>
+
+						{# on fait une pill primary avec du texte blanc #}
+
+						<li class="list-group-item">
+							<a href="{{path('app_serie_like',{id : UneSeries.id})}}" class="js-a-likes">
+								<div class="badge badge-pill badge-primary bg-primary">
+									<span class="material-symbols-outlined">thumb_up</span>
+									<span class="js-nb-likes">{{UneSeries.likes}}</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+          </div>
+				{% endfor %}
+		</div>
+  </div>
+
+	{% endblock %}
+	{% block stylesheets %}
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"/>
+	{% endblock %}
+	{% block javascripts %}
+	<script src="{{asset('js/likes.js')}}">
+
+		{% endblock %}

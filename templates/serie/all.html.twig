@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for uneSerie in lesSeries %} 
+    <div class="card" style="width: 18rem;">
+  <a  href = "{{path('app_serie_detail',{id : uneSerie.id})}}">
+    <img src="{{uneSerie.image}}" class="card-img-top" alt="..." >
+  </a>
+  <div class="card-body" >
+    <h5 class="card-title">{{uneSerie.titre|upper}}</h5>
+    <p class="card-text">{{uneSerie.id}}</p>
+
+    <a href="{{path('sup__serie_by_id',{'id':uneSerie.id, 'token':csrf_token('delete_serie')})}}"->supprimer</a>
+    
+    <form method='POST' action="{{path('sup__serie_by_id',{'id':uneSerie.id})}}">
+        <input type="hidden" name="method" vlue="DELETE">
+        <input type="hidden" name="token" values="{{csrf_token('delete_serie')}}">
+        <button class="btn btn-danger"> supprimer 2 </button>
+  </div>
+  <input type='' >
+ {% endfor %}
+</div>
+{% endblock %}

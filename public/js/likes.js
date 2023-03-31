@@ -8,6 +8,7 @@ for (var i = 0; i < lesLiens.length; i++) {
     lesLiens[i].addEventListener('click', majLike);
 }
 function majLike(event) {
+    console.log(event);
     /* On annule l'action par défaut correspondant à l'événement. Normalement 
     quand on clique sur un lien , cela entraîne directement une nouvelle requête 
     http. Or dans notre cas, on ne veut pas que la requête s'exécute pour afficher 

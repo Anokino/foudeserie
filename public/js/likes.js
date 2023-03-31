@@ -1,12 +1,14 @@
 /* lesLiens contient la liste des éléments <a> correspond au lien avec le 
 pouce, le nombre de like et le j'aime */
 var lesLiens = document.getElementsByClassName('js-a-likes')
+console.log(lesLiens);
 /* on parcourt les éléments que l'on vient de récupérer et pour chacun d'entre 
 eux on écoute l'événement click et on appelle la fonction majLike lorsque 
 l'événement se produit */
 for (var i = 0; i < lesLiens.length; i++) {
     lesLiens[i].addEventListener('click', majLike);
 }
+
 function majLike(event) {
     console.log(event);
     /* On annule l'action par défaut correspondant à l'événement. Normalement 

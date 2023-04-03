@@ -1,33 +1,23 @@
-/* lesLiens contient la liste des éléments <a> correspond au lien avec le 
-pouce, le nombre de like et le j'aime */
+/* lesLiens contient la liste des éléments <a> correspond au lien avec le*/
 var lesLiens = document.getElementsByClassName('js-a-likes')
 console.log(lesLiens);
-/* on parcourt les éléments que l'on vient de récupérer et pour chacun d'entre 
-eux on écoute l'événement click et on appelle la fonction majLike lorsque 
-l'événement se produit */
 for (var i = 0; i < lesLiens.length; i++) {
     lesLiens[i].addEventListener('click', majLike);
 }
 
 function majLike(event) {
     console.log(event);
-    /* On annule l'action par défaut correspondant à l'événement. Normalement 
-    quand on clique sur un lien , cela entraîne directement une nouvelle requête 
-    http. Or dans notre cas, on ne veut pas que la requête s'exécute pour afficher 
-    une page contenant le json*/
     event.preventDefault()
     //On instancie un objet XMLHttpRequest
     let xhr = new XMLHttpRequest();
-    /* On récupère l'URL du lien. Attention l'élément sur lequel se produit 
-   l'événement ne correspond pas à la balise <a> mais à la balise <i> ou une des 
-   balises <span> */
 
     /* utiliser la propriété parentNode pour récupérer le parent de l'élément 
    sur lequel s'est produit l'événement c’est-à-dire la balise <a> */
 
-    let baliseA = event.target.parentNode.parentNode;
+    // On utilise la méthode closest pour récupérer la balise <a> parente la plus proche
+    let baliseA = event.target.closest('a');
 
-    //On récupère la valeur de l'attribut href 
+    // On récupère la valeur de l'attribut href
     let url = baliseA.getAttribute('href');
     //on dump l'url et la baliseA
     console.log(baliseA);

@@ -6,6 +6,7 @@ use App\Repository\SerieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Table(name: 'serie')]
@@ -28,6 +29,7 @@ class Serie
 
     #[ORM\Column(name: 'premiereDiffusion', type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $premiereDiffusion = null;
+    #[Assert\LessThan('today')]
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;

@@ -3,7 +3,11 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-{{form_start(form)}}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Ajouter un film</h1>
+            {{form_start(form)}}
 {{form_row(form.titre)}}
 {{form_row(form.resume)}}
 {{form_row(form.duree)}}
@@ -13,6 +17,10 @@
 {{form_row(form.genres)}}
 <input id="ajout" type='submit' values='sauvegarder' name='btnSubmit'>
 {{form_end(form)}} 
+        </div>
+    </div>
+</div>
+
 
 
 {% endblock %}
